@@ -4,6 +4,7 @@ const router = express.Router();
 // Controllers
 const {
   createRajdhaniAdvertisersContactFormEntryAndMail,
+  createLucknowCarsContactFormEntryAndMail,
 } = require("../controllers/contactFormController");
 
 //----------------------------------------------------------------Create Routes
@@ -13,6 +14,14 @@ const {
 router.post(
   "/rajdhani-advertisers/:company_api_key/create",
   createRajdhaniAdvertisersContactFormEntryAndMail
+);
+
+// @desc    Create new contact for Lucknow Cars
+// @route   POST /api/contact-form/lucknow-cars/:company_api_key/create
+// @access  Public
+router.post(
+  "/lucknow-cars/:company_api_key/create",
+  createLucknowCarsContactFormEntryAndMail
 );
 
 module.exports = router;

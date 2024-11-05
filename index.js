@@ -9,7 +9,9 @@ app.use(
   cors({
     origin: [
       process.env.VITE_REACT_ORIGIN,
+      process.env.LOCAL_DEV_SERVER_ORIGIN,
       process.env.RAJDHANI_ADVERTISERS_ORIGIN,
+      process.env.LUCKNOW_CARS_ORIGIN,
     ],
   })
 );
