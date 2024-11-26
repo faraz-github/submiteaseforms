@@ -105,7 +105,7 @@ const createLucknowCarsContactFormEntryAndMail = asyncHandler(
           res.send(`
               <h2>Thank you for contacting us, ${contactData?.name}!</h2>
               <p>Your message has been successfully sent. 🎉</p>
-              <a href="https://lucknowcars.netlify.app/">Go back to the website</a>
+              <a href="${process.env.LUCKNOW_CARS_ORIGIN}">Go back to the website</a>
               <script>
                 window.history.pushState({}, '', '/api/contact-form/lucknow-cars/thank-you');
               </script>
