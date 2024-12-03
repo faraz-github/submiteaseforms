@@ -12,6 +12,7 @@ app.use(
       process.env.LOCAL_DEV_SERVER_ORIGIN,
       process.env.RAJDHANI_ADVERTISERS_ORIGIN,
       process.env.LUCKNOW_CARS_ORIGIN,
+      process.env.SCRIPTED_THREADS_ORIGIN,
     ],
   })
 );
@@ -27,6 +28,7 @@ app.use(express.urlencoded({ limit: "50mb", extended: false }));
 //----------------------------------------------------------------ROUTES
 app.use("/api/contact-form", require("./routes/contactFormRoutes"));
 app.use("/api/booking-form", require("./routes/bookingFormRoutes"));
+app.use("/api/signup-form", require("./routes/signupFormRoutes"));
 
 app.listen(port, () => {
   console.log(`Server started on port: ${port}`);

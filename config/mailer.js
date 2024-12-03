@@ -128,8 +128,45 @@ async function sendLucknowCarsNewContactMail(sendTo, contactData) {
   }
 }
 
+async function sendScriptedThreadsNewSignupMail(sendTo, signupData) {
+  try {
+    // Transport Setup
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.SCRIPTED_THREADS_SENDING_EMAIL_ADDRESS,
+        pass: process.env.SCRIPTED_THREADS_SENDING_EMAIL_APP_PASSWORD,
+      },
+    });
+
+    // Mail Options
+    const mailOptions = {
+      from: `Scripted Threads | Website <${process.env.SCRIPTED_THREADS_SENDING_EMAIL_ADDRESS}>`,
+      to: sendTo,
+      subject: "New Signup Request 🎉", // Subject line
+      text: `New Signup |  Email: ${signupData?.email}`, // plain text body
+      html: `
+              <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+                <hr />
+                <center>
+                  <h2>New Signup Request 🎉</h2>
+                </center>
+                <hr />
+                <h4>Email: ${signupData?.email}</h4>
+              </div>
+            `, // html body
+    };
+
+    const result = await transporter.sendMail(mailOptions);
+    return result;
+  } catch (error) {
+    return error;
+  }
+}
+
 module.exports = {
   sendRajdhaniAdvertisersNewContactMail,
   sendRajdhaniAdvertisersNewBookingMail,
   sendLucknowCarsNewContactMail,
+  sendScriptedThreadsNewSignupMail,
 };
